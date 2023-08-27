@@ -37,12 +37,13 @@ app.get('/api/stocks', async (req, res) => {
       const stocks = await Stock.find();
             
       const stockData = stocks.map(stock =>{
-        let newPrice = stock.price + Math.random() * 10 - 5
+        let newPrice = stock.price + Math.random() * 50 - 20
         let oldPriceArr = stock.priceRec
+        let newPriceDiff = newPrice.toFixed(2) - stock.price
         let newObj = { 
-          dateText  : `${oldPriceArr.length*30} sec`,
+          dateText  : `${oldPriceArr.length} min`,
           priceVal  : newPrice.toFixed(2),
-          priceDiff : newPrice.toFixed(2) - stock.price
+          priceDiff : newPriceDiff.toFixed(2)
          }
         addPriceRecord(stock.id, newObj.dateText, newObj.priceVal, newObj.priceDiff)
 
