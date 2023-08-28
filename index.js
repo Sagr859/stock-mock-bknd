@@ -1,13 +1,13 @@
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const Stock = require('./models/stock');
 const predefinedStocks = require('./predefinedStocks')
-
+const PORT = 8080
 
 const app = express();
-const PORT = 8000;
 
-mongoose.connect('mongodb://localhost/stock_bknd', {
+mongoose.connect(process.env.DATABASE_CON, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
