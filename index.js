@@ -1,11 +1,13 @@
 require('dotenv').config();
 const express = require('express');
+const cors = require('cors');
 const mongoose = require('mongoose');
 const Stock = require('./models/stock');
 const predefinedStocks = require('./predefinedStocks')
 const PORT = 8080
 
 const app = express();
+app.use(cors());
 
 mongoose.connect(process.env.DATABASE_CON, {
   useNewUrlParser: true,
